@@ -695,6 +695,7 @@ MiniFiles.config = {
   options = {
     -- Whether to delete permanently or move into module-specific trash
     permanent_delete = true,
+    trash_path = H.fs_child_path(vim.fn.stdpath('data'), 'mini.files/trash')
     -- Whether to use for editing directories
     use_as_default_explorer = true,
   },
@@ -1715,7 +1716,7 @@ H.explorer_compute_fs_actions = function(explorer)
 
   -- Compute delete actions accounting for (non) permanent delete
   local delete, is_trash = {}, not explorer.opts.options.permanent_delete
-  local trash_dir = H.fs_child_path(vim.fn.stdpath('data'), 'mini.files/trash')
+  local trash_dir = options.trash_path
   for p, _ in pairs(delete_map) do
     local to = is_trash and H.fs_child_path(trash_dir, H.fs_get_basename(p)) or nil
     table.insert(delete, { action = 'delete', from = p, to = to })
