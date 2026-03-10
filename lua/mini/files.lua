@@ -695,7 +695,7 @@ MiniFiles.config = {
   options = {
     -- Whether to delete permanently or move into module-specific trash
     permanent_delete = true,
-    trash_path = H.fs_child_path(vim.fn.stdpath('data'), 'mini.files/trash')
+    trash_path = H.fs_child_path(vim.fn.stdpath('data'), 'mini.files/trash'),
     -- Whether to use for editing directories
     use_as_default_explorer = true,
   },
